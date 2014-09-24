@@ -26,8 +26,8 @@ module Sidekiq
           'COALESCE(sidekiq_jobs.finished_at, NOW()) - sidekiq_jobs.started_at',
           'sidekiq_jobs.status',
           'sidekiq_jobs.result',
-          'sidekiq_jobs.current_status',
-          'sidekiq_jobs.args'
+          'sidekiq_jobs.args',
+          'sidekiq_jobs.current_status'
         ]
         @searchable_columns = [
           'sidekiq_jobs.jid',
@@ -56,8 +56,8 @@ module Sidekiq
             job.result.blank? ? nil : job.result[:message],
             job.status,
             job.result,
-            job.current_status,
-            job.args
+            job.args,
+            job.current_status
           ]
         end
       end
