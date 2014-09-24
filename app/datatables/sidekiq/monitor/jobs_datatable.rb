@@ -27,7 +27,6 @@ module Sidekiq
           'sidekiq_jobs.status',
           'sidekiq_jobs.result',
           'sidekiq_jobs.args',
-          'sidekiq_jobs.current_status'
         ]
         @searchable_columns = [
           'sidekiq_jobs.jid',
@@ -57,7 +56,6 @@ module Sidekiq
             job.status,
             job.result,
             job.args,
-            job.current_status
           ]
         end
       end
