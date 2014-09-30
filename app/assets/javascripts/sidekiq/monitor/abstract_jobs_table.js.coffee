@@ -113,13 +113,23 @@ class SidekiqMonitor.AbstractJobsTable
       """
     else if result?
       rows_html = ''
+      log_html = ''
       for key, value of result
-        rows_html += "<tr><td>#{key}</td><td>#{JSON.stringify(value, null, 2)}</td></tr>"
+        if key != 'log'
+          rows_html += "<tr><td>#{key}</td><td>#{JSON.stringify(value, null, 2)}</td></tr>"
+      if result.log
+        log_html = """
+          <h5>Log</h5>
+          <pre>
+          #{result.log.join("\n")}
+          </pre>
+        """
       result_html = """
         <h4>Result</h4>
         <table class="table table-striped">
           #{rows_html}
         </table>
+        #{log_html}
       """
 
     modal_html = """
